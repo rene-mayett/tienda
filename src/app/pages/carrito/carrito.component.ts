@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartItems, shopCart } from 'src/app/models/carrito.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-carrito',
@@ -34,15 +35,16 @@ export class CarritoComponent {
     'accion'
   ];
   
+constructor(private cartService:CartService){}
+
   ngOnInit(): void {
-
     this.dataSource = this.carrito.items;
-
   }
 
 
   getTotal(items: Array<CartItems>):number {
-    return items.map((item) => item.precio * item.cantidad).reduce((prev,current)=> prev + current,0);
+    return this.cartService.getTotal(items);
+    //return items.map((item) => item.precio * item.cantidad).reduce((prev,current)=> prev + current,0);
   }
 
 }
