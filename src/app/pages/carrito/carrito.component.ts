@@ -39,12 +39,32 @@ constructor(private cartService:CartService){}
 
   ngOnInit(): void {
     this.dataSource = this.carrito.items;
+    this.cartService.cart.subscribe((_cart:shopCart)=>{
+      this.carrito = _cart;
+      this.dataSource = this.carrito.items;
+    })
   }
 
 
   getTotal(items: Array<CartItems>):number {
     return this.cartService.getTotal(items);
     //return items.map((item) => item.precio * item.cantidad).reduce((prev,current)=> prev + current,0);
+  }
+
+  onClearCart():void{
+    this.cartService.clearCart();
+  }
+
+  onRemoveRow(item:CartItems):void{
+    this.cartService.removeRow(item);
+  }
+
+  onAddCantidad(item:CartItems):void{
+    this.cartService.addToCart(item);
+  }
+
+  onRemoveCantidad(item:CartItems):void{
+    this.cartService.removeCantidad(item);
   }
 
 }

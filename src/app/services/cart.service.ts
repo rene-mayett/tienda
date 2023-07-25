@@ -38,4 +38,32 @@ export class CartService {
     this.cart.next({items:[]});
     this._snackBar.open('Eliminados','OK',{duration: 3000});
   }
+
+
+  removeCantidad(item:CartItems):void{
+    let itemForRemoval: CartItems | undefined;
+    let filteredItems = this.cart.value.items.map((_item)=>{
+      if(_item.id === item.id){
+        _item.cantidad--;
+      }
+      if(item.cantidad === 0){
+        itemForRemoval = _item;
+      }
+      return _item;
+    });
+    if(itemForRemoval){
+      filteredItems = this.removeRow(itemForRemoval,false);
+    }
+    this.cart.next({items: filteredItems});
+    this._snackBar.open('1 elemento eliminado del carrito','OK',{duration: 3000});
+  }
+
+  removeRow(item:CartItems,update:boolean = true):Array<CartItems>{
+    const filteredItems = this.cart.value.items.filter((_item)=> _item.id !== item.id);
+    this.cart.next({items: filteredItems});
+    if(update){this._snackBar.open('1 elemento eliminado del carrito','OK',{duration: 3000});}
+    return filteredItems;
+  }
+
+  
 }
