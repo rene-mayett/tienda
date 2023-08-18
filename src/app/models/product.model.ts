@@ -1,8 +1,8 @@
-export interface stockElement {
+export interface Product {
     id: number,
     title: string,
     price: number,
-    category: string,
     description: string,
+    category: string,
     image: string
 }

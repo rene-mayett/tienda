@@ -1,26 +1,22 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { stockElement } from 'src/app/models/stock.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-product-box',
  templateUrl:'./product-box.component.html'
 })
-export class ProductBoxComponent {
+export class ProductBoxComponent implements OnInit {
   @Input() fullWidthMode = false;
-  @Output()addToCart = new EventEmitter();
+  @Output() addToCart = new EventEmitter();
+  @Input() producto_front: Product | undefined; 
 
-  product: stockElement | undefined = {
-    id: 1,
-    title: 'Colageno Hidrolizado',
-    price: 900,
-    category: 'Berry Gen',
-    description: 'Frasco en polvo 205gr',
-    image: '../../../../assets/polvo_hidrolizado.png'
-  };
-  
+  ngOnInit():void {
+    //console.log(this.product);
+  }
+
   onAddToCart():void{
-    this.addToCart.emit(this.product);
-    console.log(this.product);
+    this.addToCart.emit(this.producto_front);
+    console.log(this.producto_front);
   }
 
 }
