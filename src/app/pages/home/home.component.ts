@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Producto } from 'src/app/models/producto.model';
+import { stockElement } from 'src/app/models/stock.model';
 import { CartService } from '../../services/cart.service';
 
 const ROWS_HEIGHT: {[id:number]: number} = {1:400, 3:335, 4:350}
@@ -25,7 +25,7 @@ export class HomeComponent {
     this.categoria = newCategoria;
   }
 
-  onAddToCart(producto:Producto):void{
+  onAddToCart(producto:stockElement):void{
     this.cartService.addToCart({
     producto: producto.image,
     nombre: producto.title,

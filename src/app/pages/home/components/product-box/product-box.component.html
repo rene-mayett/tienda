@@ -1,15 +1,15 @@
 <mat-card [ngClass]="{'text-center': !fullWidthMode}">
     <div [ngClass]="{'flex':fullWidthMode}">
-        <img class="mb-1 mx-auto h-[200px]" [ngClass]="{'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode}" src="https://via.placeholder.com/150">
+        <img class="mb-1 mx-auto h-[200px]" [ngClass]="{'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode}" src={{product?.image}}>
         <div class="w-full" [ngClass]="{'px-8 flex flex-col justify-between':fullWidthMode}">
             <div>
                 <br>
-                <h5>Pastillas</h5>
-                <p class="truncate hover:whitespace-normal"> Aspirina</p>
-                <p *ngIf="fullWidthMode">Descripción breve...</p>
+                <h5>{{product?.category}}</h5>
+                <p class="truncate hover:whitespace-normal">{{product?.title}}</p>
+                <p *ngIf="fullWidthMode">{{product?.description}}</p>
             </div>
             <div class="flex justify-between">
-                <span class="text-gray-500"> &nbsp; {{'150'|currency}}</span>
+                <span class="text-gray-500"> &nbsp; {{product?.price|currency}}</span>
                 <button (click)="onAddToCart()">
                     <mat-icon> shopping_cart <span>&nbsp;</span></mat-icon>
                 </button>
