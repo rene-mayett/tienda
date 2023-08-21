@@ -1,10 +1,16 @@
-<mat-expansion-panel *ngIf="categories">
+<mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title>Categorías</mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-selection-list [multiple]="false">
-        <mat-list-option *ngFor="let cat of categories" [value]="cat">
-            <button (click)="onShowCategory(cat)">{{cat}}</button>
-        </mat-list-option>
+
+    <mat-selection-list #cat [multiple]="false">
+        <mat-list-option 
+        *ngFor="let cat of categories"
+        (click)="onShowCategory(cat)" 
+                [value]="cat"> {{cat}} </mat-list-option>
     </mat-selection-list>
+
+    <!-- <p>
+    Option selected: {{cat.selectedOptions.hasValue() ? cat.selectedOptions.selected[0].value : 'Ninguno'}}
+    </p> -->
 </mat-expansion-panel>

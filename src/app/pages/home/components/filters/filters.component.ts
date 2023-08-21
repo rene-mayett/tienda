@@ -12,6 +12,7 @@ export class FiltersComponent implements OnInit,OnDestroy {
 
   categories: Array<string> | undefined ;
   categoriesSubscription: Subscription | undefined;
+  cat:string='';
 
   constructor (private storeService: StoreService) {}
 
@@ -21,8 +22,10 @@ export class FiltersComponent implements OnInit,OnDestroy {
     });
   }
 
-  onShowCategory(category:string):void{
-    this.showCategory.emit(category);
+  onShowCategory(newcat:string):void{
+    console.log("Click:",newcat)
+    this.cat = newcat;
+    this.showCategory.emit(newcat);
   }
 
   ngOnDestroy(): void {
