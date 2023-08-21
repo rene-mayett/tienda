@@ -26,11 +26,21 @@ export class HomeComponent implements OnInit, OnDestroy{
   }
 
   getProducts():void{
-    this.productsSubscription = this.storeService.getAllProducts(this.count,this.sort)
+    this.productsSubscription = this.storeService.getAllProducts(this.count,this.sort,this.categoria)
     .subscribe((_productos)=> {
       this.productosAPI = _productos;
     });
     
+  }
+
+  onSortChange(sort:string):void{
+    this.sort= sort;
+    this.getProducts();
+  }
+
+  onItemsUpdate(noitems:number):void{
+    this.count = noitems.toString();
+    this.getProducts();
   }
 
   onColumnsCountChange(colsNum:number):void{
@@ -41,6 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   onShowCategory(newCategoria:string):void{
     this.categoria = newCategoria;
+    this.getProducts();
   }
 
   onAddToCart(producto:Product):void{

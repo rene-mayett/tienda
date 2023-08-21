@@ -1,13 +1,11 @@
 <mat-card class="mb-4">
      <div class="flex justify-between">
         <div>
-            <button mat-button [matMenuTriggerFor]="sortByMenu">
-                Ordenar{{orden}} 
-                <mat-icon>expand_more</mat-icon>
+            <button mat-button [matMenuTriggerFor]="sortByMenu"> Ordenar <mat-icon>expand_more</mat-icon>
             </button>
             <mat-menu #sortByMenu="matMenu">
-                <button (click)="onSortUpdated(' de menor a mayor')" mat-menu-item>Descendente</button>
-                <button (click)="onSortUpdated (' de mayor a menor')" mat-menu-item>Ascendente</button>
+                <button (click)="onSortUpdated('desc')" mat-menu-item>Descendente</button>
+                <button (click)="onSortUpdated ('asc')" mat-menu-item>Ascendente</button>
             </mat-menu>
         </div>
         <div class="flex items-center">
