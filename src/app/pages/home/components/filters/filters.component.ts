@@ -33,5 +33,4 @@ export class FiltersComponent implements OnInit,OnDestroy {
       this.categoriesSubscription.unsubscribe();
     }
   }
-
 }

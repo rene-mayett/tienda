@@ -5,9 +5,10 @@
 
     <mat-selection-list #cat [multiple]="false">
         <mat-list-option 
-        *ngFor="let cat of categories"
-        (click)="onShowCategory(cat)" 
-                [value]="cat"> {{cat}} </mat-list-option>
+            *ngFor="let cat of categories"
+            (click)="onShowCategory(cat)" 
+            [value]="cat"> {{cat}} 
+        </mat-list-option>
     </mat-selection-list>
 
     <!-- <p>
